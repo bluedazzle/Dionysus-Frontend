@@ -2,3 +2,4 @@
 *.pyo
 fabfile.py
 .DS_Store
+node_modules/
