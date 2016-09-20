@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 let App = React.createClass({
     getInitialState: function(){
-        return {title: "Dionysus"}
+        return {title: "Welcome to Dionysus"}
     },
 
     render: function(){
