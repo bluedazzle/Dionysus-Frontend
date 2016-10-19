@@ -36,3 +36,14 @@
     "status": 1, 
     "msg": "success"
 }
+
+
+{
+  "body": {
+    "phone": "15608059720",
+    "last_login": "2016-09-20 16:27:51",
+    "nick": "匿名\b用户"
+  },
+  "status": 1,
+  "msg": "success"
+}

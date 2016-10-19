@@ -26,7 +26,7 @@ let TableItem = React.createClass({
             <td>
                 <h4 className="ui image header">
                     <img src={this.props.video.thumb_nail} className="ui mini rounded image"/>
-                    <div className="content">{this.props.video.title}
+                    <div className="content">{this.props.video.source.title}
                         <div className="sub header">
                             <span><i className="icon comment"></i></span>
                             <span>&nbsp; </span>
@@ -35,31 +35,21 @@ let TableItem = React.createClass({
                 </h4>
             </td>
             <td>{this.props.video.create_time}</td>
-            {(() => {switch(this.props.video.classification) {
-                case 1:
-                    return <td>电影</td>
-                case 2:
-                    return <td>MV</td>
-                case 3:
-                    return <td>搞笑</td>
-                default:
-                    break;
-            }})()}
-            <td>{this.props.video.like}</td>
+            <td>{this.props.video.author.uid}</td>
             <td>
-            <a className="ui small blue button" target="_blank" href={this.props.video.url}>详情</a>
+            <a className="ui small blue button" href={'/page/share/' + this.props.video.id} target="_blank">查看</a>
             <button className="ui small green button" onClick={this.deleteItem(this.props.video.id)}>删除</button>
             <div className="ui basic modal" id={"delm" + this.props.video.id}>
                         <i className="close icon"></i>
                         <div className="header">
-                            删除视频 {this.props.video.title}
+                            删除视频
                         </div>
                         <div className="image content">
                             <div className="image">
                                 <i className="remove user icon"></i>
                             </div>
                             <div className="description">
-                                <p>请确认,您要删除视频 {this.props.video.title} 吗?</p>
+                                <p>请确认,您要删除分享吗?</p>
                             </div>
                         </div>
                         <div className="actions">
