@@ -37,6 +37,12 @@ let App = React.createClass({
             level: 'success'
         });
     },
+    _modifyNotification: function () {
+        this._notificationSystem.addNotification({
+            message: '修改成功',
+            level: 'success'
+        });
+    },
 
     getInitialState: function () {
         return {
@@ -66,7 +72,7 @@ let App = React.createClass({
                 <div className="pusher" style={{ width: "80%" }}>
                     <div style={{ margin: "3%" }}>
                         <BreadCrumb title={this.state.title}></BreadCrumb>
-                        <Table source="api/v1/videos" tables={this.state.videos} pageObj={this.state.page_obj} ths={ths} addNotification={this._addNotification}></Table>
+                        <Table source="api/v1/videos" tables={this.state.videos} pageObj={this.state.page_obj} ths={ths} modifyNotification={this._modifyNotification} addNotification={this._addNotification}></Table>
                     </div>
                 </div>
             </div>

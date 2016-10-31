@@ -2,7 +2,7 @@ import React from 'react';
 
 let TableItem = React.createClass({
     getInitialState: function () {
-        return { title: "Welcome to Dionysus" }
+        return {value: ""}
     },
     deleteItem: function(id){
         let context = this;
@@ -19,6 +19,15 @@ let TableItem = React.createClass({
                 })
                 .modal('show');
                 }
+    },
+    changeLike: function(){
+        let iInput = this.refs.iInput;
+        let like = iInput.value;
+        let id = this.props.video.id;
+        this.props.onChangeLikeHandle(id, like)();
+    },
+    handleChange: function(e){
+        this.setState({value: e.target.value});
     },
 
     render: function () {
@@ -45,7 +54,11 @@ let TableItem = React.createClass({
                 default:
                     break;
             }})()}
-            <td>{this.props.video.like}</td>
+            <td><div className="ui action input">
+                <input ref="iInput" type="text" defaultValue={this.props.video.like}/>
+                <button className="ui blue button" onClick={this.changeLike}>保存</button>
+                </div>
+            </td>
             <td>
             <a className="ui small blue button" target="_blank" href={this.props.video.url}>详情</a>
             <button className="ui small green button" onClick={this.deleteItem(this.props.video.id)}>删除</button>

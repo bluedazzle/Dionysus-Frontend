@@ -49,6 +49,22 @@ let Table = React.createClass({
             context.props.addNotification();
         })
     },
+    onChangeLikeHandle: function(id, like){
+        let context = this;
+        let data = new FormData();
+        data.append('like', like);
+        return () => {
+        let url = generateUrl('api/v1/video/' + id + '/like');
+        fetch(url, {method: 'post',
+                    body: data})
+                    .then(function (response) {
+                        return response.json()
+                    })
+                    .then(function (json){
+                        context.getDataByPage(1)();
+                        context.props.modifyNotification();
+                    })}
+    },
 
     render: function () {
         return <table className="ui celled selectable table">
@@ -63,6 +79,7 @@ let Table = React.createClass({
                     {this.state.data.video_list.map((video, i) => {
                         return <TableItem video={video} 
                         onDeleteHandle={this.onDeleteHandle}
+                        onChangeLikeHandle={this.onChangeLikeHandle}
                         key={i}></TableItem>
                     }) }
             </tbody>
