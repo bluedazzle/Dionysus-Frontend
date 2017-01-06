@@ -63,7 +63,7 @@ let App = React.createClass({
 
     render: function () {
         let admin = { nick: "rapospectre" };
-        let ths = [{ title: "影片" }, { title: "上传时间" }, { title: "分类" }, { title: "热门程度" }, { title: "操作" }]
+        let ths = [{ title: "影片" }, { title: "上传时间" }, { title: "分类" }, { title: "热门程度" }, {title: "优先级"}, { title: "操作" }]
         return <div>
             <NotificationSystem ref="notificationSystem" />
             <Navigation source="admin/api/admin"></Navigation>

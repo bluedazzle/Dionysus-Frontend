@@ -25,7 +25,7 @@ let Navigation = React.createClass({
         return <nav className="ui menu" style={{margin: "-1px 0"}}>
     <div className="ui header item">
         <img src="/s/image/avatar.png" height="30px;" style={{marginRight: 10}}></img>
-        Dionysus Admin
+        大头秀管理
     </div>
     <div className=" right menu">
         <div id="admin_dropdown" className="ui dropdown item">

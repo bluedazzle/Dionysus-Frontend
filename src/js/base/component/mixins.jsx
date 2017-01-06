@@ -3,7 +3,7 @@ import {generateUrl} from './http.jsx';
 let FetchDataMxin = {
     componentWillMount: function () {
         let context = this;
-        let url = generateUrl(this.props.source) + '&all=1';
+        let url = generateUrl(this.props.source) + '&dev=1&all=1';
         fetch(url, {credentials: 'same-origin'})
         .then(function (response) {
             return response.json()})

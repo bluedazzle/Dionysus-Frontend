@@ -12,13 +12,17 @@ let mockData = {
         title: "test_video",
         url: "http://oda176fz0.bkt.clouddn.com/WeChatSight2.mp4?vframe/jpg/offset/1/w/200/h/200/",
         create_time: "2016-09-21 12:22:22",
-        like: 10
+        like: 10,
+        views: 0,
+        visitor: 10
     },
         {
             title: "example_video",
             url: "http://oda176fz0.bkt.clouddn.com/WeChatSight2.mp4?vframe/jpg/offset/1/w/200/h/200/",
             create_time: "2016-09-21 12:22:22",
-            like: 11
+            like: 11,
+            views: 0,
+            visitor: 10
         }],
     page_obj: {
         current: 1,
@@ -34,6 +38,12 @@ let App = React.createClass({
     _addNotification: function () {
         this._notificationSystem.addNotification({
             message: '删除成功',
+            level: 'success'
+        });
+    },
+    _changeNotification: function(){
+        this._notificationSystem.addNotification({
+            message: '修改成功',
             level: 'success'
         });
     },
@@ -57,7 +67,7 @@ let App = React.createClass({
 
     render: function () {
         let admin = { nick: "rapospectre" };
-        let ths = [{ title: "原视频" }, { title: "上传时间" }, { title: "用户" }, { title: "操作" }]
+        let ths = [{ title: "原视频" }, { title: "上传时间" }, { title: "用户" }, { title: "浏览量" }, { title: "推广量" }, { title: "操作" }]
         return <div>
             <NotificationSystem ref="notificationSystem" />
             <Navigation source="admin/api/admin"></Navigation>
@@ -66,7 +76,9 @@ let App = React.createClass({
                 <div className="pusher" style={{ width: "80%" }}>
                     <div style={{ margin: "3%" }}>
                         <BreadCrumb title={this.state.title}></BreadCrumb>
-                        <Table source="api/v1/shares" tables={this.state.videos} pageObj={this.state.page_obj} ths={ths} addNotification={this._addNotification}></Table>
+                        <Table source="api/v1/shares" tables={this.state.videos} pageObj={this.state.page_obj} ths={ths} 
+                        addNotification={this._addNotification}
+                        changeNotification={this._changeNotification}></Table>
                     </div>
                 </div>
             </div>

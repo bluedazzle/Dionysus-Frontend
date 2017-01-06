@@ -20,8 +20,18 @@ let TableItem = React.createClass({
                 .modal('show');
                 }
     },
+    handleRecommend:function(){
+        let id = this.props.video.id;
+        this.props.onRecommendHandle(id)();
+    },
 
     render: function () {
+        var recommendButton;
+        if(!this.props.video.recommend){
+            recommendButton = <button className="ui small green button" onClick={this.handleRecommend}>上热门</button>
+        }else{
+            recommendButton = <button className="ui small gray button" onClick={this.handleRecommend}>下热门</button>
+        }
         return <tr>
             <td>
                 <h4 className="ui image header">
@@ -36,9 +46,12 @@ let TableItem = React.createClass({
             </td>
             <td>{this.props.video.create_time}</td>
             <td>{this.props.video.author.uid}</td>
+            <td>{this.props.video.views}</td>
+            <td>{this.props.video.visitor}</td>
             <td>
             <a className="ui small blue button" href={'/page/share/' + this.props.video.id} target="_blank">查看</a>
-            <button className="ui small green button" onClick={this.deleteItem(this.props.video.id)}>删除</button>
+            {recommendButton}
+            <button className="ui small red button" onClick={this.deleteItem(this.props.video.id)}>删除</button>
             <div className="ui basic modal" id={"delm" + this.props.video.id}>
                         <i className="close icon"></i>
                         <div className="header">

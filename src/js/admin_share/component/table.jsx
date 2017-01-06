@@ -49,6 +49,19 @@ let Table = React.createClass({
             context.props.addNotification();
         })
     },
+    onRecommendHandle: function(id){
+        let context = this;
+        let url = generateUrl('api/v1/share/' + id + '/recommend');
+        fetch(url, {mode: 'cors',
+            method: 'get'
+        })
+        .then(function (response) {
+            return response.json()})
+        .then(function (json){
+            context.getDataByPage(1)();
+            context.props.changeNotification();
+        })
+    },
 
     render: function () {
         return <table className="ui celled selectable table">
@@ -63,6 +76,7 @@ let Table = React.createClass({
                     {this.state.data.share_list.map((video, i) => {
                         return <TableItem video={video} 
                         onDeleteHandle={this.onDeleteHandle}
+                        onRecommendHandle={this.onRecommendHandle}
                         key={i}></TableItem>
                     }) }
             </tbody>

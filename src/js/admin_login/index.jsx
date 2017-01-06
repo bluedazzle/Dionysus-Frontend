@@ -69,7 +69,7 @@ let App = React.createClass({
                     </div>
                     <div className="ui vertical divider"></div>
                     <div className="center aligned column"> 
-                        <h2 className="ui center aligned icon header"><img src="/s/image/avatar.png" className="circular alternate icon" style={{height: 40}}/> Close </h2>
+                        <h2 className="ui center aligned icon header"><img src="/s/image/header.png" className="circular alternate icon" style={{height: 40}}/> 大头秀 </h2>
                     </div>
                 </div>
             </div>
